@@ -20,7 +20,7 @@
 ?>
 
 <body>
-
+    <?php include('header.php'); ?>
 
     <div id="button_div">
         <input type="hidden" id='user_id' value="<?php echo $_SESSION['user_id']; ?>">
@@ -33,5 +33,7 @@
         <p id="success_message"></p>
     </div>
     <div id="about"></div>
+
+    <?php include('footer.php'); ?>
 </body>
 </html>
