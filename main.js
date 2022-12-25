@@ -114,7 +114,8 @@ function getPosts(){
         // loop through json response filling posts div with posts
         $.each(posts_response, function(index, post){
             $('#posts').append("<div class='post_container' id='post_"+post.post_id+"'>");
-            $('#post_'+post.post_id).append("<h3>"+post.email+"</h3>");
+            // MAKE EMAIL LINKED TO PROFILE
+            $('#post_'+post.post_id).append("<h3><a href='profile.php?id="+post.user_id+"'>"+post.email+"</a></h3>");
             $('#post_'+post.post_id).append("<p class='content'>"+post.content+"</p>");
             $('#post_'+post.post_id).append("<p class='timestamp'>"+post.time+"</p>");
             // Add edit button if id is a match
