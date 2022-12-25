@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#button_div {
+    width: 50%;
+    background-color: blanchedalmond;
+    margin: 20px auto;
+    padding: 10px auto;
+    text-align: center;
+}
+
+#button_div input {
+    background-color: lightcyan;
+    margin: 10px auto;
+}
