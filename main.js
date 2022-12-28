@@ -114,18 +114,17 @@ function getPosts(){
         // loop through json response filling posts div with posts
         $.each(posts_response, function(index, post){
             $('#posts').append("<div class='post_container' id='post_"+post.post_id+"'>");
-            // MAKE EMAIL LINKED TO PROFILE
+            if (session_user_id == post.user_id) {
+                $('#post_'+post.post_id).append("<i class='fa fa-trash-o' style='font-size: 1.7em' onclick='deletePost("+post.post_id+")'></i>");
+            }
             $('#post_'+post.post_id).append("<h3><a href='profile.php?id="+post.user_id+"'>"+post.email+"</a></h3>");
-            $('#post_'+post.post_id).append("<p class='content'>"+post.content+"</p>");
+            $('#post_'+post.post_id).append("<p class='content' id='content_"+post.post_id+"'>"+post.content+"</p>");
             $('#post_'+post.post_id).append("<p class='timestamp'>"+post.time+"</p>");
             // Add edit button if id is a match
             console.log(session_user_id);
             console.log(post.user_id);
-            if (session_user_id == post.user_id) {
-                $('#post_'+post.post_id).append("<input type='button' id='delete_button' onclick='deletePost("+post.post_id+")' value='Delete' />");
-            }
             $('#post_'+post.post_id).append("<div class='comment_box' id='post_comment_box_"+post.post_id+"'>");
-            $('#post_comment_box_'+post.post_id).append("<input type='textarea' class='comment_textarea' id='comment_textarea_"+post.post_id+"'>");
+            $('#post_comment_box_'+post.post_id).append("<input type='text' class='comment_textarea' id='comment_textarea_"+post.post_id+"'>");
             $('#post_comment_box_'+post.post_id).append("<input type='button' class='comment_button' id='post_comment_button_"+post.post_id+"' value='Comment' />");
             $('#post_comment_box_'+post.post_id).append("</div>");
             // for each post, add all comments to that post_container
@@ -154,7 +153,7 @@ function getComments(post_id) {
         console.log(response);
         // loop through json response filling appropriate comment div with comment
         $.each(response, function(index, comment){
-            $('#post_'+post_id).append("<div class='comment_container' id='comment_"+comment.comment_id+"'>");
+            $('#post_'+post_id).append("<hr><div class='comment_container' id='comment_"+comment.comment_id+"'>");
             $('#comment_'+comment.comment_id).append("<h4>"+comment.email+"</h4>");
             $('#comment_'+comment.comment_id).append("<p class='content'>"+comment.content+"</p>");
             $('#comment_'+comment.comment_id).append("<p class='timestamp'>"+comment.time+"</p>");

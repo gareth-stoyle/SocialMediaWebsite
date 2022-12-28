@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="main.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='main.js' defer></script>
 </head>
 
@@ -19,7 +20,7 @@
     <?php include('header.php'); ?>
     <div class="main">
         <div id="create_post_container">
-            <input type='textarea' id='post_textarea'>
+            <input type='textarea' placeholder="What's on your mind?" id='post_textarea'>
             <input type="hidden" id='user_id' value="<?php echo $_SESSION['user_id']; ?>">
             <input type='button' id='create_post_button' value='Post' />
             <p id="success_message"></p>
