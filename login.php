@@ -56,14 +56,14 @@ if(isset($_COOKIE['sessionkey'])){
 echo $_SESSION['id'], $_SESSION['loggedin'];
 ?>
 
-<div id="login_form">
+<div class="main" id="login">
     <!-- Login form that posts to authenticate.php -->
     <form action="authenticate.php" method="post">
         <h2>Login</h2>
         Email: <input type="email" name="email" placeholder="email" required><br>
         Password: <input type="password" id="password" name="password" required><br>
         <input name="remember" id="remember" type="checkbox" /> Remember me<br>
-        <input id="login" class="button" type="submit" value="Login"></center>
+        <input id="login_button" type="submit" value="Login"></center>
     </form>
 </div>
 <?php include("footer.php"); ?>  

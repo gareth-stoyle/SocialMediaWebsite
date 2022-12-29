@@ -14,6 +14,15 @@
 </head>
 
 <body>
+    <div class="header">
+        <img src="images/logo.jpg" class="logo" />
+        <div class="header-right">
+            <a href="home.php">Feed</a>
+            <a href="register.php">Register</a>
+            <a href="logoin.php">Login</a>
+        </div>
+    </div>
+
     <?php
     // output error if one is given
     if (isset($_GET['error'])) {
@@ -21,15 +30,15 @@
     }
     ?>
 
-    <div id="registration_form">
+    <div id="registration_form" class="main">
         <!-- Registration form that posts to PHP_SELF -->
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <p>Sign-up with a unique email and secure password</p>
+            <p><strong>Sign-up with a unique email and secure password</strong></p>
             Email: <input type="email" name="email" placeholder="email" required><br>
             Re-type Email: <input type="email" name="email2" placeholder="email" required><br>
             Password: <input type="password" id="password" name="password" required><br>
             Re-type Password: <input type="password" name="password2" required><br>
-            <input id="register" class="button" type="submit" value="Add User"></center>
+            <input id="register_button" class="button" type="submit" value="Add User"></center>
         </form>
 
         <?php

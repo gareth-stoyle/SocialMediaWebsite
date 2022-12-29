@@ -1,4 +1,4 @@
-/* SORT ORDER OF CSS SHEET AND MAKE 900px and ~500px RESPONSIVE */
+/* profile.php figure out why main not there & Make about section responsive */
 
 * {
     margin: 0;
@@ -62,6 +62,7 @@ body {
     background: -webkit-linear-gradient(top left, #DD968D, #D31D6B);
     background: -moz-linear-gradient(top left, #DD968D, #D31D6B);
     background: linear-gradient(to bottom right, #DD968D, #D31D6B);
+    background-repeat: no-repeat;
 }
 
 .main {
@@ -120,11 +121,27 @@ hr {
     margin: 20px 0;
 }
 
-#create_post_button:hover, .comment_button:hover {
+input[type="button"]:hover {
     background-image: linear-gradient(to bottom right, #DD968D, #D31D6B);
     background-color: #D31D6B;
     transition-duration: 0.4s;
     color: white;
+}
+
+#button_div {
+    text-align: center;
+}
+
+#about_button, #get_posts_button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 15px 10px 15px;
+    text-align: center;
+    font-size: 1em;
+    margin: 10px 20px 10px 20px;
+    cursor: pointer;
 }
 
 .fa-trash-o { 
@@ -139,19 +156,6 @@ hr {
     color: black;
 }
 
-
-#button_div {
-    width: 50%;
-    background-color: blanchedalmond;
-    margin: 20px auto;
-    padding: 10px auto;
-    text-align: center;
-}
-
-#button_div input {
-    background-color: lightcyan;
-    margin: 10px auto;
-}
 
 /* Text */
 .comment_textarea {
@@ -216,6 +220,71 @@ h3, h4, p {
     vertical-align: top;
     margin-top: -10px;
     float: right;
+}
+
+
+/* profile page */
+
+#about {
+    text-align: center;
+}
+
+#about input[type="button"] {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 15px 10px 15px;
+    text-align: center;
+    font-size: 1em;
+    margin: 15px 0px;
+    cursor: pointer;
+}
+
+#about input[type="text"] {
+    padding: 5px;
+}
+
+#about p {
+    margin-bottom: 20px;
+}
+
+
+/* Login & Register page */
+form input {
+    padding: 10px;
+}
+
+#login_button, #register_button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 15px 10px 15px;
+    text-align: center;
+    font-size: 1em;
+    margin: 15px 0px;
+    cursor: pointer;
+}
+
+#login_button:hover, #register_button:hover {
+    background-image: linear-gradient(to bottom right, #DD968D, #D31D6B);
+    background-color: #D31D6B;
+    transition-duration: 0.4s;
+    color: white;
+}
+
+#remember {
+    margin: 10px 0;
+}
+
+#registration_form input {
+    margin: 10px 0;
+    background-color: #f8f8f8;
+}
+
+.progress {
+    width: 80%;
 }
 
 
@@ -316,5 +385,46 @@ h3, h4, p {
         width: 100%;
         margin-top: 2px;
     }
+
+    #about_button, #get_posts_button {
+        width: 80%;
+    }
+
+    #about {
+        background-color: #f8f8f8;
+        margin: 30px 0 20px 0;
+        padding: 20px 30px 20px 20px;
+        border: 1px solid rgb(237, 237, 237);
+        border-radius: 25px;
+    }
+
+    #login {
+        background-color: rgb(255, 255, 255);
+        margin: 30px auto 20px auto;
+        padding: 20px;
+        border: 1px solid rgb(237, 237, 237);
+        border-radius: 25px;
+    }
+
+    form input[type="email"], form input[type="password"] {
+        width: 100%;
+    }
+
+    #about:empty {
+        background: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .progress {
+        width: 100%;
+    }
+
+    #register_button {
+        width: 100%;
+    }
+
+
 
 }
