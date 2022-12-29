@@ -44,10 +44,10 @@ switch($_REQUEST['action']){
     
     case 'getPosts':
         if ($_POST['request'] == 'homepage') {
-            $statement = "SELECT users.id, users.email, posts.post_id, posts.user_id, posts.content, posts.time FROM posts LEFT JOIN users ON posts.user_id = users.id;";
+            $statement = "SELECT users.id, users.email, posts.post_id, posts.user_id, posts.content, posts.time FROM posts LEFT JOIN users ON posts.user_id = users.id ORDER BY posts.post_id DESC;";
         } else {
             $request = mysqli_real_escape_string($conn, $_POST['request']);
-            $statement = "SELECT users.id, users.email, posts.post_id, posts.user_id, posts.content, posts.time FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE users.id = {$request};";
+            $statement = "SELECT users.id, users.email, posts.post_id, posts.user_id, posts.content, posts.time FROM posts LEFT JOIN users ON posts.user_id = users.id WHERE users.id = {$request} ORDER BY posts.post_id DESC;";
         }
         $result = mysqli_query($conn, $statement);
         $output = array();
