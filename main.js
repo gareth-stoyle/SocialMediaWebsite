@@ -113,23 +113,23 @@ function getPosts(){
         $('#posts').html('');
         // loop through json response filling posts div with posts
         $.each(posts_response, function(index, post){
-            $('#posts').append("<div class='post_container' id='post_"+post.post_id+"'>");
+            $('#posts').append("<div class='post_container' id='post_"+htmlEncode(post.post_id)+"'>");
             if (session_user_id == post.user_id) {
-                $('#post_'+post.post_id).append("<i class='fa fa-trash-o' style='font-size: 1.7em' onclick='deletePost("+post.post_id+")'></i>");
+                $('#post_'+htmlEncode(post.post_id)).append("<i class='fa fa-trash-o' style='font-size: 1.7em' onclick='deletePost("+post.post_id+")'></i>");
             }
-            $('#post_'+post.post_id).append("<h3><a href='profile.php?id="+post.user_id+"'>"+post.email+"</a></h3>");
-            $('#post_'+post.post_id).append("<p class='content' id='content_"+post.post_id+"'>"+post.content+"</p>");
-            $('#post_'+post.post_id).append("<p class='timestamp'>"+post.time+"</p>");
+            $('#post_'+htmlEncode(post.post_id)).append("<h3><a href='profile.php?id="+htmlEncode(post.user_id)+"'>"+post.email+"</a></h3>");
+            $('#post_'+htmlEncode(post.post_id)).append("<p class='content' id='content_"+htmlEncode(post.post_id)+"'>"+htmlEncode(post.content)+"</p>");
+            $('#post_'+htmlEncode(post.post_id)).append("<p class='timestamp'>"+htmlEncode(post.time)+"</p>");
             // Add edit button if id is a match
             console.log(session_user_id);
             console.log(post.user_id);
-            $('#post_'+post.post_id).append("<div class='comment_box' id='post_comment_box_"+post.post_id+"'>");
-            $('#post_comment_box_'+post.post_id).append("<input type='text' class='comment_textarea' id='comment_textarea_"+post.post_id+"'>");
-            $('#post_comment_box_'+post.post_id).append("<input type='button' class='comment_button' id='post_comment_button_"+post.post_id+"' value='Comment' />");
-            $('#post_comment_box_'+post.post_id).append("</div>");
+            $('#post_'+htmlEncode(post.post_id)).append("<div class='comment_box' id='post_comment_box_"+htmlEncode(post.post_id)+"'>");
+            $('#post_comment_box_'+htmlEncode(post.post_id)).append("<input type='text' class='comment_textarea' id='comment_textarea_"+htmlEncode(post.post_id)+"'>");
+            $('#post_comment_box_'+htmlEncode(post.post_id)).append("<input type='button' class='comment_button' id='post_comment_button_"+htmlEncode(post.post_id)+"' value='Comment' />");
+            $('#post_comment_box_'+htmlEncode(post.post_id)).append("</div>");
             // for each post, add all comments to that post_container
             getComments(post.post_id);
-            $('#post_'+post.post_id).append("</div>");
+            $('#post_'+htmlEncode(post.post_id)).append("</div>");
         });
     }).fail(function(response) {
         console.log(response);
@@ -153,11 +153,11 @@ function getComments(post_id) {
         console.log(response);
         // loop through json response filling appropriate comment div with comment
         $.each(response, function(index, comment){
-            $('#post_'+post_id).append("<hr><div class='comment_container' id='comment_"+comment.comment_id+"'>");
-            $('#comment_'+comment.comment_id).append("<h4>"+comment.email+"</h4>");
-            $('#comment_'+comment.comment_id).append("<p class='content'>"+comment.content+"</p>");
-            $('#comment_'+comment.comment_id).append("<p class='timestamp'>"+comment.time+"</p>");
-            $('#comment_'+comment.comment_id).append("</div>");
+            $('#post_'+htmlEncode(post_id)).append("<hr><div class='comment_container' id='comment_"+htmlEncode(comment.comment_id)+"'>");
+            $('#comment_'+htmlEncode(comment.comment_id)).append("<h4>"+htmlEncode(comment.email)+"</h4>");
+            $('#comment_'+htmlEncode(comment.comment_id)).append("<p class='content'>"+htmlEncode(comment.content)+"</p>");
+            $('#comment_'+htmlEncode(comment.comment_id)).append("<p class='timestamp'>"+htmlEncode(comment.time)+"</p>");
+            $('#comment_'+htmlEncode(comment.comment_id)).append("</div>");
         });
     }).fail(function(response) {
         console.log(response);
@@ -197,8 +197,8 @@ function getAbout() {
         $('#about').html('');
         $('#posts').html('');
         // append two divs containing bio and mobile info
-        $('#about').append("<div id='bio_div'><h4>Bio: </h4><p id='bio_text'>"+response[0].bio+"</p></div>");
-        $('#about').append("<div id='mobile_div'><h4>Mobile: </h4><p id='mobile_text'>"+response[0].mobile_no+"</p></div>");
+        $('#about').append("<div id='bio_div'><h4>Bio: </h4><p id='bio_text'>"+htmlEncode(response[0].bio)+"</p></div>");
+        $('#about').append("<div id='mobile_div'><h4>Mobile: </h4><p id='mobile_text'>"+htmlEncode(response[0].mobile_no)+"</p></div>");
         // Add edit button if id is a match
         if (session_user_id == user_id) {
             $('#about').append("<input type='button' id='edit_about' onclick='editAbout()' value='Edit' />");
@@ -216,8 +216,8 @@ function editAbout() {
     current_bio = $('#bio_text').text();
     current_mobile = $('#mobile_text').text();
     $('#about').html('');
-    $('#about').append("<div id='bio_div'><h4>Bio: </h4><input type='text' id='bio_text_input' value='"+current_bio+"'/></div>");
-    $('#about').append("<div id='mobile_'><h4>Mobile: </h4><input type='text' id='mobile_text_input' value='"+current_mobile+"'/></div>");
+    $('#about').append("<div id='bio_div'><h4>Bio: </h4><input type='text' id='bio_text_input' value='"+htmlEncode(current_bio)+"'/></div>");
+    $('#about').append("<div id='mobile_'><h4>Mobile: </h4><input type='text' id='mobile_text_input' value='"+htmlEncode(current_mobile)+"'/></div>");
     $('#about').append("<input type='button' id='submit_about' onclick='submitAbout()' value='Submit' />");
 }
 
@@ -282,5 +282,14 @@ function deletePost(post_id) {
         $('#success_message').addClass("alert");
         $('#success_message').html("Error creating post");
         console.log(response);
+    });
+}
+
+function htmlEncode(str){
+    /**
+     * Escape html characters to prevent XSS
+    */
+    return String(str).replace(/[^\w. ]/gi, function(c){
+        return '&#'+c.charCodeAt(0)+';';
     });
 }

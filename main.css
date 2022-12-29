@@ -421,7 +421,7 @@ form input {
         width: 100%;
     }
 
-    #register_button {
+    #register_button, #login_button {
         width: 100%;
     }
 

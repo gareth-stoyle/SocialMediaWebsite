@@ -9,12 +9,20 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <?php
     include("connection.php");
-    include("header.php");
     session_start();
 ?>        
 </head>
 
 <body>
+    <div class="header">
+        <img src="images/logo.jpg" class="logo" />
+        <div class="header-right">
+            <a href="home.php">Feed</a>
+            <a href="register.php">Register</a>
+            <a href="login.php">Login</a>
+        </div>
+    </div>
+
 <?php
 // output error or success message if one is given
 if(isset($_GET['error'])){

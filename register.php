@@ -19,7 +19,7 @@
         <div class="header-right">
             <a href="home.php">Feed</a>
             <a href="register.php">Register</a>
-            <a href="logoin.php">Login</a>
+            <a href="login.php">Login</a>
         </div>
     </div>
 
