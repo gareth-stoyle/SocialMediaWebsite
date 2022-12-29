@@ -44,8 +44,7 @@ Footer.php
 - Displays a website footer.
 
 After
-- check those 2x if !result statements by tampering with sessionkey
-- add success msg for profile post section
-- check XSS can't be done
-- Style
+- gitignore this file
+- Zip this and run a fresh test
 - Update assignment 3 with changes
+- Submit all
